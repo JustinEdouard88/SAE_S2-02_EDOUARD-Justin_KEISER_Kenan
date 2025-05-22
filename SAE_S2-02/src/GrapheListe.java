@@ -13,7 +13,7 @@ public class GrapheListe implements Graphe{
      * @return de type int
      */
     public int getIndice(String n) {
-        int indice = 0;
+        int indice = -1;
         for (int i = 0; i < noeuds.size(); i++) {
             if (noeuds.get(i).equals(n)) {
                 indice = i;
