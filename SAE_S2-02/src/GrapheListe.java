@@ -46,11 +46,16 @@ public class GrapheListe implements Graphe{
      * @param cout de type double
      */
     public void ajouterArc(String depart, String destination, double cout) {
-        if (!noeuds.contains(depart)) {
+        if (noeuds == null) {
             noeuds.add(depart);
-        }
-        if(!noeuds.contains(destination)) {
             noeuds.add(destination);
+        } else {
+            if (!noeuds.contains(depart)) {
+                noeuds.add(depart);
+            }
+            if(!noeuds.contains(destination)) {
+                noeuds.add(destination);
+            }
         }
         Arc newArc = new Arc(destination, (int)cout);
         adjacence.get(getIndice(depart)).getArcs().add(newArc);
@@ -62,9 +67,9 @@ public class GrapheListe implements Graphe{
      */
     public String toString() {
         String str = "";
-        for (int i = 0; i < noeuds.size() - 1; i++) {
+        for (int i = 0; i < noeuds.size(); i++) {
             str = str + noeuds.get(i) + " -> ";
-            for (int j = 0; j < adjacence.get(i).getArcs().size() - 1; j++) {
+            for (int j = 0; j < adjacence.get(i).getArcs().size(); j++) {
                 str = str + adjacence.get(i).getArcs().get(j).getD() + "(" + adjacence.get(i).getArcs().get(j).getC() + ") ";
             }
             str = str + "\n";
