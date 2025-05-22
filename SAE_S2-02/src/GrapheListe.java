@@ -62,9 +62,9 @@ public class GrapheListe implements Graphe{
      */
     public String toString() {
         String str = "";
-        for (int i = 0; i < noeuds.size(); i++) {
+        for (int i = 0; i < noeuds.size() - 1; i++) {
             str = str + noeuds.get(i) + " -> ";
-            for (int j = 0; j < adjacence.get(i).getArcs().size(); j++) {
+            for (int j = 0; j < adjacence.get(i).getArcs().size() - 1; j++) {
                 str = str + adjacence.get(i).getArcs().get(j).getD() + "(" + adjacence.get(i).getArcs().get(j).getC() + ") ";
             }
             str = str + "\n";
