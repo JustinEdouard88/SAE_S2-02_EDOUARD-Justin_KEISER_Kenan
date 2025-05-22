@@ -3,8 +3,8 @@ import java.util.List;
 
 public class GrapheListe implements Graphe{
 
-    private ArrayList<String> noeuds;
-    private ArrayList<Arcs> adjacence;
+    private ArrayList<String> noeuds = new ArrayList<String>();
+    private ArrayList<Arcs> adjacence = new ArrayList<Arcs>();
 
     /**
      * Méthode qui prend en paramètre une chaîne de caractère correspondant à un noeud
@@ -46,16 +46,11 @@ public class GrapheListe implements Graphe{
      * @param cout de type double
      */
     public void ajouterArc(String depart, String destination, double cout) {
-        if (noeuds == null) {
+        if (!noeuds.contains(depart)) {
             noeuds.add(depart);
+        }
+        if(!noeuds.contains(destination)) {
             noeuds.add(destination);
-        } else {
-            if (!noeuds.contains(depart)) {
-                noeuds.add(depart);
-            }
-            if(!noeuds.contains(destination)) {
-                noeuds.add(destination);
-            }
         }
         Arc newArc = new Arc(destination, (int)cout);
         adjacence.get(getIndice(depart)).getArcs().add(newArc);
