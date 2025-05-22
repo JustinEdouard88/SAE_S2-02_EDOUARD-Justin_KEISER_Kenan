@@ -1,9 +1,30 @@
 public class Arc {
-    int c;
-    String d;
+    private int c;
+    private String d;
 
+    /**
+     *
+     * @param dest
+     * @param cout
+     */
     public Arc(String dest, int cout){
         this.c = cout;
         this.d = dest;
+    }
+
+    /**
+     *
+     * @return int
+     */
+    public int getC() {
+        return c;
+    }
+
+    /**
+     *
+     * @return int
+     */
+    public String getD() {
+        return d;
     }
 }

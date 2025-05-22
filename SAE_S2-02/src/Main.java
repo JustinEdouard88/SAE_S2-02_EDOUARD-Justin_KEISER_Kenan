@@ -10,5 +10,6 @@ public class Main {
         gl.ajouterArc("d","b",23);
         gl.ajouterArc("d","c",10);
         gl.ajouterArc("e","d",43);
+        System.out.println(gl);
     }
 }
