@@ -4,8 +4,8 @@ public class Arc {
 
     /**
      *
-     * @param dest
-     * @param cout
+     * @param String dest
+     * @param int cout
      */
     public Arc(String dest, int cout){
         this.c = cout;

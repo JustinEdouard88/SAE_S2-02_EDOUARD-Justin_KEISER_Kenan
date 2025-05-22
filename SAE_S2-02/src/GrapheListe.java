@@ -13,7 +13,7 @@ public class GrapheListe implements Graphe{
      * @return de type int
      */
     public int getIndice(String n) {
-        int indice = 0;
+        int indice = -1;
         for (int i = 0; i < noeuds.size(); i++) {
             if (noeuds.get(i).equals(n)) {
                 indice = i;
@@ -48,14 +48,17 @@ public class GrapheListe implements Graphe{
     public void ajouterArc(String depart, String destination, double cout) {
         if (!noeuds.contains(depart)) {
             noeuds.add(depart);
+            adjacence.add(new Arcs()); // Ajouter une liste vide pour le sommet
         }
-        if(!noeuds.contains(destination)) {
+        if (!noeuds.contains(destination)) {
             noeuds.add(destination);
+            adjacence.add(new Arcs()); // Pareil pour la destination
         }
-        Arc newArc = new Arc(destination, (int)cout);
-        adjacence.get(getIndice(depart)).getArcs().add(newArc);
-    }
 
+        Arc newArc = new Arc(destination, (int) cout);
+        int indiceDepart = getIndice(depart);
+        adjacence.get(indiceDepart).getArcs().add(newArc);
+    }
     /**
      * Méthode qui renvoie chaque noeud associé à chaque liste de ces arcs adjacent
      * @return de type String
