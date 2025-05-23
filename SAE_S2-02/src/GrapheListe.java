@@ -25,6 +25,7 @@ public class GrapheListe implements Graphe{
         while(line != null) {
             String[] split = line.split("\t");
             ajouterArc(split[0], split[1], parseInt(split[2]));
+            line = br.readLine();
         }
     }
 
