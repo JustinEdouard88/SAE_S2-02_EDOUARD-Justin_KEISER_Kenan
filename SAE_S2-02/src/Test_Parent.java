@@ -1,8 +1,9 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static void main(String[] args) {
-        //2eme Partie
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class Test_Parent {
+    @Test
+    public void test_TrouverParent(){
         GrapheListe gl = new GrapheListe();
         gl.ajouterArc("a","b",12);
         gl.ajouterArc("a","d",87);
@@ -11,10 +12,9 @@ public class Main {
         gl.ajouterArc("d","b",23);
         gl.ajouterArc("d","c",10);
         gl.ajouterArc("e","d",43);
-        System.out.println(gl);
 
-        //3eme Partie
         BellmanFord bf = new BellmanFord();
-        System.out.println(bf.resoudre(gl,"a"));
+        assertEquals("d",bf.resoudre(gl,"a").getParent("c"),"Le parent de c devrait etre d");
+
     }
 }
