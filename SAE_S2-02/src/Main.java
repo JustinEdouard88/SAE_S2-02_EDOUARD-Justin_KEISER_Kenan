@@ -15,6 +15,20 @@ public class Main {
 
         //3eme Partie
         BellmanFord bf = new BellmanFord();
+        long start = System.currentTimeMillis();
         System.out.println(bf.resoudre(gl,"a"));
+        long end = System.currentTimeMillis();
+        long duration = end - start;
+
+        System.out.println("Temps d'exécution : " + duration + " ms");
+
+        //4eme Partie
+        Djikstra dj = new Djikstra();
+        long start2 = System.currentTimeMillis();
+        System.out.println(dj.resoudre(gl,"a"));
+        long end2 = System.currentTimeMillis();
+        long duration2 = end2 - start2;
+
+        System.out.println("Temps d'exécution : " + duration2 + " ms");
     }
 }
