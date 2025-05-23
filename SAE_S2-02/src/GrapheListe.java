@@ -23,8 +23,11 @@ public class GrapheListe implements Graphe{
         BufferedReader br = new BufferedReader(new FileReader(nom));
         String line = br.readLine();
         while(line != null) {
-            String[] split = line.split("\t");
-            ajouterArc(split[0], split[1], parseInt(split[2]));
+            String[] split = line.split(" ");
+            String from = split[0].toLowerCase();
+            String to = split[1].toLowerCase();
+            int cost = Integer.parseInt(split[2]);
+            ajouterArc(from, to, cost);
             line = br.readLine();
         }
     }

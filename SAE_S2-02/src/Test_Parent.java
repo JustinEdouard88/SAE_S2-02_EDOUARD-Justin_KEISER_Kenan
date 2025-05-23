@@ -1,10 +1,13 @@
 import org.junit.jupiter.api.Test;
+
+import java.io.IOException;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Test_Parent {
     @Test
-    public void test_TrouverParent(){
-        GrapheListe gl = new GrapheListe();
+    public void test_TrouverParent() throws IOException {
+        GrapheListe gl = new GrapheListe("Graphe/g1.txt");
         gl.ajouterArc("a","b",12);
         gl.ajouterArc("a","d",87);
         gl.ajouterArc("b","e",11);

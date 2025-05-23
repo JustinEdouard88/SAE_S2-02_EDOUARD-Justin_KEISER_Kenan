@@ -1,16 +1,11 @@
+import java.io.IOException;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         //2eme Partie
-        GrapheListe gl = new GrapheListe();
-        gl.ajouterArc("a","b",12);
-        gl.ajouterArc("a","d",87);
-        gl.ajouterArc("b","e",11);
-        gl.ajouterArc("c","a",19);
-        gl.ajouterArc("d","b",23);
-        gl.ajouterArc("d","c",10);
-        gl.ajouterArc("e","d",43);
+        GrapheListe gl = new GrapheListe("Graphe/g1.txt");
         System.out.println(gl);
 
         //3eme Partie

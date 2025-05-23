@@ -1,6 +1,8 @@
+import java.io.IOException;
+
 public class MainDijkstra {
-    public static void main(String[] args) {
-        GrapheListe gl = new GrapheListe();
+    public static void main(String[] args) throws IOException {
+        GrapheListe gl = new GrapheListe("Graphe/g1.txt");
         gl.ajouterArc("a","b",12);
         gl.ajouterArc("a","d",87);
         gl.ajouterArc("b","e",11);
