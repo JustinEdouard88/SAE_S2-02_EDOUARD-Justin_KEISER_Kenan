@@ -83,4 +83,20 @@ public class Valeurs {
         }
         return res;
     }
+
+    /**
+     * Méthode qui retourne une liste de nœuds correspondant au chemin menant au nœud passé en
+     * paramètre depuis le point de départ donné lors de la construction de l’objet Valeurs
+     * @param destination de type String
+     * @return de type list de String
+     */
+    public List<String> calculerChemin(String destination) {
+        List<String> result = new ArrayList<String>();
+        String ParentCourant = destination;
+        while(ParentCourant != null) {
+            result.add(ParentCourant);
+            ParentCourant = getParent(ParentCourant);
+        }
+        return result;
+    }
 }

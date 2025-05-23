@@ -52,6 +52,13 @@ public class BellmanFord {
      *
      */
 
+    /**
+     * Méthode qui retourne un objet de type Valeurs correspondant aux principes du point fixe de BellmanFord
+     * permettant de trouver les plus courts chemins entre un point de départ et tout les autres du graphe
+     * @param g de type Graphe
+     * @param depart de type String
+     * @return de type Valeurs
+     */
     public Valeurs resoudre(Graphe g, String depart) {
         Valeurs valeurs = new Valeurs();
         for(int x = 0; x<g.listeNoeud().size(); x++) {

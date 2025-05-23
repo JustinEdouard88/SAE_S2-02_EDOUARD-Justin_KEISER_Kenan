@@ -32,11 +32,9 @@ import java.util.List;
 import java.util.Set;
 
 public class Djikstra {
-    public static Valeurs dijkstra(Graphe g, String depart) {
+    public static Valeurs resoudre(Graphe g, String depart) {
         Valeurs v = new Valeurs();
         Set<String> Q = new HashSet<>(g.listeNoeud());
-
-        // Initialisation des distances
         for (String noeud : Q) {
             v.setValeur(noeud, Double.POSITIVE_INFINITY);
             v.setParent(noeud, null);
@@ -44,7 +42,6 @@ public class Djikstra {
         v.setValeur(depart, 0.0);
 
         while (!Q.isEmpty()) {
-            // Trouver le sommet u avec la plus petite valeur
             String u = null;
             double min = Double.POSITIVE_INFINITY;
 
@@ -57,8 +54,6 @@ public class Djikstra {
 
             if (u == null) break;
             Q.remove(u);
-
-            // Pour chaque voisin v de u
             for (Arc arc : g.suivants(u)) {
                 String voisin = arc.getD();
                 int cout = arc.getC();
