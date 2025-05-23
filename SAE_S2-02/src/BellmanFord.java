@@ -68,7 +68,7 @@ public class BellmanFord {
                 for(int n = 0; n<voisins.size(); n++) {
                     double coutArc = voisins.get(n).getC();
                     double nouvelleValeur = valeurs.getValeur(g.listeNoeud().get(x)) + coutArc;
-                    if(nouvelleValeur <= valeurs.getValeur(voisins.get(n).getD())) {
+                    if(nouvelleValeur < valeurs.getValeur(voisins.get(n).getD())) {
                         valeurs.setValeur(voisins.get(n).getD(), nouvelleValeur);
                         valeurs.setParent(voisins.get(n).getD(), g.listeNoeud().get(x));
                         modifie = true;
