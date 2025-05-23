@@ -1,0 +1,6 @@
+S T 9
+T U 12
+U V 7
+V W 4
+S W 30
+U S 2

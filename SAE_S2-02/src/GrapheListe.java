@@ -1,10 +1,32 @@
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import static java.lang.Double.parseDouble;
+import static java.lang.Integer.parseInt;
 
 public class GrapheListe implements Graphe{
 
     private ArrayList<String> noeuds = new ArrayList<String>();
     private ArrayList<Arcs> adjacence = new ArrayList<Arcs>();
+
+    /**
+     * Constructeur qui prend un nom de fichier en paramètre et
+     * li les données du fichier pour en faire un graphe
+     * @param nom de type String
+     * @throws IOException
+     */
+    public GrapheListe(String nom) throws IOException {
+        BufferedReader br = new BufferedReader(new FileReader(nom));
+        String line = br.readLine();
+        while(line != null) {
+            String[] split = line.split("\t");
+            ajouterArc(split[0], split[1], parseInt(split[2]));
+        }
+    }
 
     /**
      * Méthode qui prend en paramètre une chaîne de caractère correspondant à un noeud
@@ -42,11 +64,11 @@ public class GrapheListe implements Graphe{
     public void ajouterArc(String depart, String destination, double cout) {
         if (!noeuds.contains(depart)) {
             noeuds.add(depart);
-            adjacence.add(new Arcs()); // Ajouter une liste vide pour le sommet
+            adjacence.add(new Arcs());
         }
         if (!noeuds.contains(destination)) {
             noeuds.add(destination);
-            adjacence.add(new Arcs()); // Pareil pour la destination
+            adjacence.add(new Arcs());
         }
 
         Arc newArc = new Arc(destination, (int) cout);
