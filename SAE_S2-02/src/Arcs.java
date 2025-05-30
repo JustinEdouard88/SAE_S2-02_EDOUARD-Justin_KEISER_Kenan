@@ -21,6 +21,7 @@ public class Arcs {
 
     /**
      * Méthode getter qui retourne l'entiereté de la liste arcs
+     * @return List<Arc>
      */
     public List<Arc> getArcs() {
         return this.arcs;

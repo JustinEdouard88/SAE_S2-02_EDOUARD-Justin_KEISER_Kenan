@@ -32,6 +32,14 @@ import java.util.List;
 import java.util.Set;
 
 public class Djikstra {
+
+    /**
+     * Méthode qui retourne un objet de type Valeurs correspondant aux principes de Dijkstra
+     * permettant de trouver les plus courts chemins entre un point de départ et tout les autres du graphe
+     * @param g de type Graphe
+     * @param depart de type String
+     * @return de type Valeurs
+     */
     public static Valeurs resoudre(Graphe g, String depart) {
         Valeurs v = new Valeurs();
         Set<String> Q = new HashSet<>(g.listeNoeud());
@@ -56,13 +64,70 @@ public class Djikstra {
             Q.remove(u);
             for (Arc arc : g.suivants(u)) {
                 String voisin = arc.getD();
-                int cout = arc.getC();
+                double cout = arc.getC();
 
                 if (Q.contains(voisin)) {
                     double d = v.getValeur(u) + cout;
                     if (d < v.getValeur(voisin)) {
                         v.setValeur(voisin, d);
                         v.setParent(voisin, u);
+                    }
+                }
+            }
+        }
+
+        return v;
+    }
+
+    /**
+     * Méthode qui retourne un objet de type Valeurs correspondant aux principes de Dijkstra
+     * permettant de trouver les plus courts chemins entre un point de départ et tout les autres du graphe
+     * En plus cette Méthode rajoute une pénalité de 10 si on change de ligne
+     * @param g de type Graphe
+     * @param depart de type String
+     * @return de type Valeurs
+     */
+    public static Valeurs resoudre2(Graphe g, String depart) {
+        Valeurs v = new Valeurs();
+        Set<String> Q = new HashSet<>(g.listeNoeud());
+        String derniereLigne = null;
+
+        for (String noeud : Q) {
+            v.setValeur(noeud, Double.POSITIVE_INFINITY);
+            v.setParent(noeud, null);
+        }
+        v.setValeur(depart, 0.0);
+
+        while (!Q.isEmpty()) {
+            String u = null;
+            double min = Double.POSITIVE_INFINITY;
+
+            for (String s : Q) {
+                if (v.getValeur(s) < min) {
+                    min = v.getValeur(s);
+                    u = s;
+                }
+            }
+
+            if (u == null) break;
+            Q.remove(u);
+
+            derniereLigne = g.suivants(g.listeNoeud().get(0)).get(0).getLigne();
+            for (Arc arc : g.suivants(u)) {
+                String voisin = arc.getD();
+                double cout = arc.getC();
+
+                double penalite = 10;
+                if (derniereLigne.equals(arc.getLigne())) {
+                    penalite = 0;
+                }
+
+                if (Q.contains(voisin)) {
+                    double d = v.getValeur(u) + cout + penalite;
+                    if (d < v.getValeur(voisin)) {
+                        v.setValeur(voisin, d);
+                        v.setParent(voisin, u);
+                        derniereLigne = arc.getLigne();
                     }
                 }
             }
